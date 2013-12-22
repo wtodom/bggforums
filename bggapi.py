@@ -45,7 +45,7 @@ def get_posts(thread_id):
 	posts = []
 	for item in all_posts:
 		post = {
-			"username": item["username"],
+			"author": item["username"],
 			"title": item.subject.text,
 			"body": item.body.text,
 			"post_date": item["postdate"],

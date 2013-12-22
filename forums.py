@@ -38,7 +38,8 @@ def view_forum(forum_id):
 
 @app.route("/forum/<forum_id>/thread/<thread_id>")
 def view_thread(forum_id, thread_id):
-	pass
+	posts = bggapi.get_posts(thread_id)
+	return render_template("thread.html", forum=forum_id, thread=thread_id, sidebar_links=sidebar_data(), posts=posts)
 
 
 # Run it.
