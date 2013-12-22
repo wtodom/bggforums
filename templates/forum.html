@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="panel panel-info">
+  <div class="panel-heading"><h3 class="panel-title">Threads</h3></div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Original Poster</th>
+        <th>Title</th>
+        <th>Posted On</th>
+        <th>Last Activity</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for thread in threads %}
+      <tr>
+        <td>{{ thread.author }}</td>
+        <td><a href="/forum/{{ forum }}/thread/{{ thread.id }}">{{ thread.title }}</a></td>
+        <td>{{ thread.posted_on }}</td>
+        <td>{{ thread.last_activity }}</td>
+      </tr>
+      {% else %}
+        <p>No threads found.</p>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock body%}
+

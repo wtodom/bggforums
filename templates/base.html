@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+  <head>
+    <title>BGG Forums</title>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">BGG Forums</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#">Some</a></li>
+            <li><a href="#">links</a></li>
+            <li><a href="#">could</a></li>
+            <li><a href="#">go</a></li>
+            <li><a href="#">here</a></li>
+            <li><a href="#">eventually</a></li>
+            <li><a href="#">.</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="row">
+        <div class="col-md-3">
+          {# the accordion thing - http://jsfiddle.net/qdqrT/3/ #}
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">Games</h3>
+            </div>
+            <div class="panel-body">
+              <div class="accordion" id="sidebar-accordion">
+                  {% for game in sidebar_links %}
+                    <div class="accordion-group">
+                      <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#sidebar-accordion" href="{{"#collapse" + game.short_name}}">
+                          <h4>{{ game.name }}</h4>
+                        </a>
+                      </div>
+                      <div id="{{"collapse" + game.short_name}}" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                          <div class="list-group">
+                            {% for forum in game.forum_list %}
+                              <a href="/forum/{{ forum.id }}" class="list-group-item">{{ forum.name }}</a>
+                            {% else %}
+                              <p>No Forums found.</p>
+                            {% endfor %}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  {% else %}
+                    <p>No games found.</p>
+                  {% endfor %}
+               </div>
+             </div>
+          </div>
+        </div>
+        <div class="col-md-9">
+          {% block body %}
+          {% endblock body%}
+        </div>
+      </div>
+    </div>
+
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+  </body>
+</html>
