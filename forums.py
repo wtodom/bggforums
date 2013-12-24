@@ -15,6 +15,11 @@ def get_games():
 			"name": "Android: Netrunner",
 			"id": "124742",
 			"short_name": "ANR"
+		},
+		{
+			"name": "Candyland",
+			"id": "5048",
+			"short_name": "CL"
 		}
 	]
 
