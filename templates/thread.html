@@ -7,7 +7,7 @@
 			<h3 class="panel-title">{{ post.author }} - {{ post.title }} <span class="pull-right">{{ post.post_date }}</span></h3>
 		</div>
 		<div class="panel-body">
-			{{ post.body }}
+			{{ post.body | safe }}
 		</div>
 	</div>
 {% else %}

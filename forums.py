@@ -3,7 +3,7 @@ from flask import Flask, request, session, g, redirect, url_for, \
 	 abort, render_template, flash
 
 # Config
-DEBUG = True
+DEBUG = False
 
 # Create app
 app = Flask(__name__)
